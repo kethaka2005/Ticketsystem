@@ -9,6 +9,7 @@ public class Configuration {
 
     public Configuration(){}
 
+
     public void Configuration(){
         this.customerRetrievalRate=customerRetrievalRate;
         this.maxTicketCapacity=maxTicketCapacity;
