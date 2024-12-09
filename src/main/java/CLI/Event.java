@@ -4,10 +4,12 @@ public class Event {
     private int TotalNoOfTicket;
     private int TicketReleaseRate;
     private int MaxTicketCapacity;
+    private double CustRetrievalRate;
     public void Event(int TotalNoOfTicket,int TicketReleaseRate){
      this.TotalNoOfTicket=TotalNoOfTicket;
      this.TicketReleaseRate=TicketReleaseRate;
      this.MaxTicketCapacity=MaxTicketCapacity;
+     this.CustRetrievalRate=CustRetrievalRate;
     }
 
     public int getTotalNoOfTicket() {
@@ -32,5 +34,13 @@ public class Event {
 
     public void setMaxTicketCapacity(int maxTicketCapacity) {
         MaxTicketCapacity = maxTicketCapacity;
+    }
+
+    public double getCustRetrievalRate() {
+        return CustRetrievalRate;
+    }
+
+    public void setCustRetrievalRate(double custRetrievalRate) {
+        CustRetrievalRate = custRetrievalRate;
     }
 }

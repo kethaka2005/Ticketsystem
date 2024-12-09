@@ -1,17 +1,57 @@
 package CLI;
 
-public class Customer {
-    private int CustRetrevalRate;
+import java.util.NoSuchElementException;
 
-    public void Customer(int CustRetrevalRate){
-     this.CustRetrevalRate=CustRetrevalRate;
+public class Customer implements Runnable{
+    private int CustRetrievalRate;
+    private int NoOfTickets;
+    private TicketPool ticketPool;
+
+
+    public Customer(int NoOfTickets, int CustRetrievalRate,TicketPool ticketPool){
+        this.CustRetrievalRate=CustRetrievalRate;
+        this.NoOfTickets=NoOfTickets;
+        this.ticketPool=ticketPool;
     }
 
-    public int getCustRetrevalRate() {
-        return CustRetrevalRate;
+    public int getCustRetrievalRate() {
+        return CustRetrievalRate;
     }
 
-    public void setCustRetrevalRate(int custRetrevalRate) {
-        CustRetrevalRate = custRetrevalRate;
+    public void setCustRetrievalRate(int custRetrievalRate) {
+        CustRetrievalRate = custRetrievalRate;
     }
+
+    public int getNoOfTickets() {
+        return NoOfTickets;
+    }
+
+    public void setNoOfTickets(int noOfTickets) {
+        NoOfTickets = noOfTickets;
+    }
+
+    public TicketPool  getTicketPool() {
+        return ticketPool;
+    }
+
+    public void setTicketPool(TicketPool ticketPool) {
+        this.ticketPool = ticketPool;
+    }
+
+    @Override
+    public void run(){
+        for(int i=1;i<=NoOfTickets;i++){
+            System.out.println("Ticket has been removed");
+            try {
+                ticketPool.removeTicket();
+                Thread.sleep(getCustRetrievalRate());
+            }    catch(InterruptedException e){
+                System.out.println("thread was interrupted.Exiting...");
+            }
+            catch(NoSuchElementException NSE){
+                System.out.println("There no Tickets remaining ");
+            }
+        }
+    }
+
 }
