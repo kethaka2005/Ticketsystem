@@ -1,7 +1,16 @@
-package Repo.userRepository;
+package com.oop.cw.Backend.Repo;
 
-import Ticket.Ticket;
+import com.oop.cw.Backend.Model.Tickets.Ticket;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface TicketRepo extends JpaRepository<Ticket,Integer> {
+import java.util.List;
+
+@Repository
+public interface TicketRepo extends JpaRepository<Ticket, Integer> {
+    Ticket findFirstTicketByVendor_VendorIdAndEvent_eventIDAndTicketType(int vendorId, int eventID, String ticketType);
+
+    Ticket findFirstTicketByVendor_VendorIdAndEvent_eventIDAndTicketTypeAndCustomerIsNull(int vendorId, int eventID, String ticketType);
+
+    List<Ticket> findAllByTicketPool_ticketPoolId(int ticketPoolID);
 }
